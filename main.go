@@ -1,7 +1,6 @@
 package main
 
 import (
-	"Directory-Auto-Backup/zip"
 	_ "context"
 	"encoding/json"
 	"fmt"
@@ -56,7 +55,7 @@ func main() {
 		return
 	}
 
-	zip.ZipWriter(".idea/", "test")
+	ZipWriter(".idea/", "test")
 	for i := 0; i < len(config.LocalPaths); i++ {
 		fmt.Println(config.LocalPaths[i])
 	}

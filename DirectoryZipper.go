@@ -1,4 +1,4 @@
-package zip
+package main
 
 import (
 	"fmt"
