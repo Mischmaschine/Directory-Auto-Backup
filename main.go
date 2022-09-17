@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Directory-Auto-Backup/zip"
 	_ "context"
 	"encoding/json"
 	"fmt"
@@ -28,8 +29,8 @@ func main() {
 		}
 		// write to the file with the Config struct with pretty print
 		prettyJSON, err := json.MarshalIndent(Config{
-			RemotePath: "45.131.111.67",
-			LocalPaths: []string{"/home/docker-data/", "/root/docker-data"},
+			RemotePath: "",
+			LocalPaths: []string{"/Users/max/Downloads", "/Users/max/Downloads"},
 		}, "", "    ")
 		if err != nil {
 			fmt.Println(err)
@@ -51,9 +52,11 @@ func main() {
 
 	err = json.Unmarshal(byteValue, &config)
 	if err != nil {
+		fmt.Println(err)
 		return
 	}
 
+	zip.ZipWriter(".idea/", "test")
 	for i := 0; i < len(config.LocalPaths); i++ {
 		fmt.Println(config.LocalPaths[i])
 	}
